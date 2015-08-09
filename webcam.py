@@ -14,7 +14,7 @@ while True:
 
     faces = faceCascade.detectMultiScale(
         gray,
-        scaleFactor=1.1,
+        scaleFactor=1.4,
         minNeighbors=5,
         minSize=(30, 30),
         flags=cv2.cv.CV_HAAR_SCALE_IMAGE
@@ -23,6 +23,7 @@ while True:
     # Draw a rectangle around the faces
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.putText(frame, "Hi, I am Akagi201", (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255))
 
     # Display the resulting frame
     cv2.imshow('Video', frame)
