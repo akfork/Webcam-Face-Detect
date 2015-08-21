@@ -1,10 +1,13 @@
 import cv2
 import sys
+import cv2.cv as cv
 
 cascPath = sys.argv[1]
 faceCascade = cv2.CascadeClassifier(cascPath)
 
-video_capture = cv2.VideoCapture(2)
+video_capture = cv2.VideoCapture(0)
+video_capture.set(cv.CV_CAP_PROP_FRAME_WIDTH, 1280)
+video_capture.set(cv.CV_CAP_PROP_FRAME_HEIGHT, 720)
 
 while True:
     # Capture frame-by-frame
@@ -17,7 +20,7 @@ while True:
         scaleFactor=1.4,
         minNeighbors=5,
         minSize=(30, 30),
-        flags=cv2.cv.CV_HAAR_SCALE_IMAGE
+        flags=cv.CV_HAAR_SCALE_IMAGE
     )
 
     # Draw a rectangle around the faces
